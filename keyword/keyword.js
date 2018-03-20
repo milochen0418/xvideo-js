@@ -6,7 +6,7 @@ let readline = require('readline')
 //main page => /new/${page}
 //keyword page => &p=${page}
 
-console.log('Program stating...');
+console.log('Program starting...');
 console.log('Please give me your keyword :)');
 
 async function Porn(keyword,page){
@@ -21,8 +21,11 @@ async function Porn(keyword,page){
 				for(let i=0;i<video.length;i++){
 					let obj = {
 						page:page,
-						name:video.eq(i).children('p').eq(0).text(),
-						link:video.eq(i).children('p').eq(0).children('a').attr('href')
+						attr:{
+							index:i,
+							name:video.eq(i).children('p').eq(0).text(),
+							link:video.eq(i).children('p').eq(0).children('a').attr('href')
+						}
 					}
 					avArray.push(obj);
 				}
