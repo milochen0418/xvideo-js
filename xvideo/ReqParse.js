@@ -71,15 +71,14 @@ function parseVideo(body,page){
 async function homepageCrawler(page){
 	let body = await req(homepageUrl(page));
 	let avlist = parseVideo(body,page);
-	console.log(avlist);
+	return avlist;
 }
 
 async function keywordCrawler(keyword,page){
 	let body = await req(keywordUrl(keyword,page));
 	let avlist = parseVideo(body,page);
-	console.log(avlist);
+	return avlist;
 }
-
 //keywordCrawler('keyword',0);
 //homepageCrawler(0);
 exports.hpc = homepageCrawler;

@@ -1,3 +1,5 @@
+let xvideo = require('../xvideo/ReqParse.js')
+
 console.reset =  function () {
   return process.stdout.write('\033c');
 };
@@ -18,26 +20,24 @@ exports.render = function(index){
 	}
 };
 
-exports.choose = function(index){
+exports.choose = async function(index){
 	if(index==3){
 		console.log('Goodbye!');
-		process.stdin.pause();
+//		process.stdin.pause();
 	}else{
 		console.reset();
-		process.stdin.pause();
 		switch(index){
 			case 0:
 				console.reset();
-				process.stdin.setRawMode(false);
-				let home = require('../homepage/homepage.js');
-				home.homeporn();
+				let home = await xvideo.hpc(0)
+				console.log(home);
+
 				//function main page listener
 				break;
 			case 1:
 				console.reset();
-				process.stdin.setRawMode(false);
-				let key = require('../keyword/keyword.js');
-				key.search();
+				let keypage = await xvideo.kwc('大奶',0);
+				console.log(keypage);
 				//keyword page listener
 				break;
 			case 2:

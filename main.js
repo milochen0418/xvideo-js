@@ -18,10 +18,13 @@ keypress(process.stdin);
 process.stdin.setRawMode(true);
 process.stdin.resume();
 
-process.stdin.on('keypress',function accept(ch,key){
+
+process.stdin.on('keypress',(ch,key)=>{
     if(key &&key.ctrl && key.name=='c'){
         process.stdin.pause();
-    }
+    }})
+
+process.stdin.on('keypress',function accept(ch,key){
     if(key.name=='q'){
         console.log('okay goodbye');
         process.stdin.pause();
