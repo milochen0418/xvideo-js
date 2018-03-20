@@ -2,7 +2,7 @@ console.reset =  function () {
   return process.stdout.write('\033c');
 };
 const menu = {
-    0:'Watch the main page',
+    0:'Watch the home page',
     1:'Input your keyword to find',
     2:'Favorite',
     3:'Exit'
@@ -27,12 +27,18 @@ exports.choose = function(index){
 		process.stdin.pause();
 		switch(index){
 			case 0:
-				console.log('0');
+				console.reset();
+				process.stdin.setRawMode(false);
+				let home = require('../homepage/homepage.js');
+				home.homeporn();
 				//function main page listener
 				break;
 			case 1:
+				console.reset();
+				process.stdin.setRawMode(false);
+				let key = require('../keyword/keyword.js');
+				key.search();
 				//keyword page listener
-				console.log('1');
 				break;
 			case 2:
 				//Favorite page listener

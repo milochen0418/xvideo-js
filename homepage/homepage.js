@@ -7,7 +7,7 @@ let readline = require('readline')
 //keyword page => &p=${page}
 
 console.log('Program stating...');
-console.log('Please give me your keyword :)');
+//console.log('Please give me your keyword :)');
 
 async function Porn(page){
 		function giveMePorn(url){
@@ -64,32 +64,32 @@ async function Porn(page){
 		}
 }
 
-(function PornPorn(){
-	let page = 0;
-	let history = [];
+exports.homeporn = function(){
+	(function PornPorn(){
+		let page = 0;
+		let history = [];
 
-	Porn(page);
+		Porn(page);
 
-	let rl = readline.createInterface({
-	  input: process.stdin,
-	  output: process.stdout,
-	  terminal: false
-	});
+		let rl = readline.createInterface({
+		  input: process.stdin,
+		  output: process.stdout,
+		  terminal: false
+		});
 
-	rl.on('line', line=>{
-		if(line==='next'){
-			try{
-				page++;
-				Porn(page)
-			}catch(err){
-				console.log(err);
+		rl.on('line', line=>{
+			if(line==='next'){
+				try{
+					page++;
+					Porn(page)
+				}catch(err){
+					console.log(err);
+				}
+			}else{
+				history.push(line);
+				page=0;
+				Porn(page);
 			}
-		}else{
-			history.push(line);
-			page=0;
-			Porn(page);
-		}
-	})
-})()
-
-
+		})
+	})();
+}

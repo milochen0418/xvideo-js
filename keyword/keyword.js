@@ -67,7 +67,7 @@ async function Porn(keyword,page){
 		}
 }
 
-(function PornPorn(){
+exports.search = function(){(function PornPorn(){
 	let page = 0;
 	let history = [];
 
@@ -93,5 +93,5 @@ async function Porn(keyword,page){
 		}
 	})
 })()
-
+}
 
