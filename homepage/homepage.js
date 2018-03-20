@@ -20,6 +20,7 @@ async function Porn(page){
 				if(video[0]===undefined) throw new Error('no content')
 				for(let i=0;i<video.length;i++){
 					let obj = {
+						page:page,
 						name:video.eq(i).children('p').eq(0).text(),
 						link:video.eq(i).children('p').eq(0).children('a').attr('href')
 					}
