@@ -12,7 +12,6 @@ const menu = {
 
 exports.render = function(index){
 	console.reset();
-
 	for(i in menu){
 		if(i == index) tab = '->  ';
 		else tab = '    '
@@ -23,7 +22,7 @@ exports.render = function(index){
 exports.choose = async function(index){
 	if(index==3){
 		console.log('Goodbye!');
-//		process.stdin.pause();
+		process.stdin.pause();
 	}else{
 		console.reset();
 		switch(index){
@@ -31,7 +30,6 @@ exports.choose = async function(index){
 				console.reset();
 				let home = await xvideo.hpc(0)
 				console.log(home);
-
 				//function main page listener
 				break;
 			case 1:

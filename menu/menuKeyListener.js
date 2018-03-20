@@ -1,4 +1,4 @@
-let keypress = require('keypress');
+//let keypress = require('keypress');
 let menu = require('./menu.js');
 
 exports.all = function(){
@@ -7,15 +7,10 @@ exports.all = function(){
     function checkIndexRange(index){
         return (index+4)%4;
     }
-
-    keypress(process.stdin);
-    process.stdin.setRawMode(true);
-    process.stdin.resume();
-
+    //keypress(process.stdin);
+    //process.stdin.setRawMode(true);
+    //process.stdin.resume();
     process.stdin.on('keypress',function arrow(ch,key){
-        if(key &&key.ctrl && key.name=='c'){
-            process.stdin.pause();
-        }
         switch(key.name){
             case 'up':
                 index--;
