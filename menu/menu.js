@@ -28,7 +28,9 @@ exports.choose = async function(index){
 		switch(index){
 			case 0:
 				console.reset();
+				console.log('loading.......')
 				let home = await xvideo.hpc(0)
+				console.reset();
 				console.log(home);
 				//function main page listener
 				break;

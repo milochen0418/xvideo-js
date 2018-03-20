@@ -21,15 +21,14 @@ async function homepage(index){
 	console.log('loading ...');
 	let home_list = await xvideo.hpc(0);
 	let start = 0;//closure
-	function render_ten(start){
+	function render_ten(){
 		console.reset();
 		for(let i=start;i<start+10;i++){
 			console.log('    '+home_list[i].attr.name);
 		}
 		start+10;
-		return start;
 	}
-	start = render_ten(start);
+	render_ten();
 	console.log(start);
 //	render_ten(start);
 //	console.log(home_list);
