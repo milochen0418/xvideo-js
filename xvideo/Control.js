@@ -14,29 +14,31 @@ console.reset =  function () {
 
 let xvideo = require('./ReqParse.js');
 
-homepage(0);
 
-async function homepage(index){
-	console.reset();
-	console.log('loading ...');
-	let home_list = await xvideo.hpc(0);
-	let start = 0;//closure
-	function render_ten(){
-		console.reset();
-		for(let i=start;i<start+10;i++){
-			console.log('    '+home_list[i].attr.name);
-		}
-		start+10;
-	}
-	render_ten();
-	console.log(start);
-//	render_ten(start);
-//	console.log(home_list);
+let page=0;
+let keyword='';
+let home_list=[];
+let keyword_list=[];
+
+
+function initial(){
+	page=0;
+	keyword='';
+	home_list=[];
+	keyword_list=[];
 }
 
-async function keywordpage(keyword,index){
+async function homepage(page){
 	console.reset();
 	console.log('loading ...');
-	let keyword_list =  await xvideo.kwc(keyword,index);
+	let temp = await xvideo.hpc(page);
+	home_list = home_list.concat(temp);
+	page+=1;
+}
+
+async function keywordpage(keyword,page){
+	console.reset();
+	console.log('loading ...');
+	let keyword_list =  await xvideo.kwc(keyword,page);
 	return keyword_list;
 }
