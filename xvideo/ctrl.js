@@ -9,10 +9,15 @@ function homeXv(){
 	let obj={};
 	obj.page = 0;//initial
 	obj.videoList = [];
-	obj.nextPage = async function(){	
-		let temp = await xvideo.hpc(obj.page);
-		obj.videoList = obj.videoList.concat(temp);
-		obj.page+=1;
+	obj.nextPage = async function(){
+		try{
+			let temp = await xvideo.hpc(obj.page);
+			obj.videoList = obj.videoList.concat(temp);
+			obj.page+=1;
+		}catch(err){
+				console.log('No more home page :(');
+				throw new Error('no content');
+			}
 	};
 	obj.pointer = 0;
 	obj.index = 0;
@@ -26,7 +31,7 @@ function homeXv(){
 		}catch(err){
 			console.reset();
 			console.log('loading...')
-			obj.nextPage().then(()=>{obj.renderTen()});
+			obj.nextPage().then(()=>{obj.renderTen()},err=>{console.log(err)});
 		}
 	}
 	obj.down = function(){
@@ -51,9 +56,14 @@ function keyXv(key){
 	let obj = homeXv();
 	obj.keyword = key;
 	obj.nextPage = async function(){	
-		let temp = await xvideo.kwc(obj.keyword,obj.page);
-		obj.videoList = obj.videoList.concat(temp);
-		obj.page+=1;
+		try{
+			let temp = await xvideo.kwc(obj.keyword,obj.page);
+			obj.videoList = obj.videoList.concat(temp);
+			obj.page+=1;
+		}catch(err){
+			console.log('No keyword porn find...sorry:(')
+			throw new Error('no content');
+		}
 	};
 	return obj;
 }
