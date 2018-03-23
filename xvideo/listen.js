@@ -28,7 +28,11 @@ function homeChoose(ch,key){
 			home.down();
 			break;
 		case 'left':
+			process.stdin.removeListener('keypress',homeChoose);
 			mkl.all(0);
+			break;
+		case 'right':
+			home.right()
 			break;
 	}
 }
@@ -42,7 +46,11 @@ function keyChoose(ch,key){
 			keyword.down();
 			break;
 		case 'left':
+			process.stdin.removeListener('keypress',keyChoose);
 			mkl.all(1);
+			break;
+		case 'right':
+			keyword.right();
 			break;
 	}	
 }
