@@ -34,6 +34,9 @@ function homeChoose(ch,key){
 		case 'right':
 			home.right()
 			break;
+		case 'space':
+			home.save();
+			break;
 	}
 }
 
@@ -51,6 +54,9 @@ function keyChoose(ch,key){
 			break;
 		case 'right':
 			keyword.right();
+			break;
+		case 'space':
+			keyword.save();
 			break;
 	}	
 }
