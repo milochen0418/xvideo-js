@@ -1,5 +1,6 @@
 let ctrl = require('./ctrl.js');
 let keypress = require('keypress');
+let mkl = require('../menu/menuKeyListener.js');
 
 keypress(process.stdin);
 process.stdin.setRawMode(true);
@@ -26,6 +27,9 @@ function homeChoose(ch,key){
 		case 'down':
 			home.down();
 			break;
+		case 'left':
+			mkl.all(0);
+			break;
 	}
 }
 
@@ -36,6 +40,9 @@ function keyChoose(ch,key){
 			break;
 		case 'down':
 			keyword.down();
+			break;
+		case 'left':
+			mkl.all(1);
 			break;
 	}	
 }
