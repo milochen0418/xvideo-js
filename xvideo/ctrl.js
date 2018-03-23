@@ -104,21 +104,30 @@ function favXv(){
 
 	obj.right = function(){
 		console.reset();
-		for(let i=obj.index;i<obj.index+10;i++){
-			if(i==obj.pointer){
-				console.log('->	'+obj.videoList[i].attr.name)
-				if(obj.videoList[i].tag!==undefined){
-					console.log('		------>'+obj.videoList[i].tag);
-					}	
-				}
-			else console.log('  	'+obj.videoList[i].attr.name);
+		try{
+			for(let i=obj.index;i<obj.index+10;i++){
+				if(i==obj.pointer){
+					console.log('->	'+obj.videoList[i].attr.name)
+					if(obj.videoList[i].tag!==undefined){
+						console.log('		------>'+obj.videoList[i].tag);
+						}	
+					}
+				else console.log('  	'+obj.videoList[i].attr.name);
+			}
+		}catch(err){
+			console.log('press "<-" back to menu')
 		}
+
 	}
 	obj.renderTen = function(){
 		console.reset();
-		for(let i=obj.index;i<obj.index+10;i++){
-			if(i==obj.pointer) console.log('->	'+obj.videoList[i].attr.name)
-			else console.log('  	'+obj.videoList[i].attr.name);
+		try{
+			for(let i=obj.index;i<obj.index+10;i++){
+				if(i==obj.pointer) console.log('->	'+obj.videoList[i].attr.name)
+				else console.log('  	'+obj.videoList[i].attr.name);
+			}
+		}catch(err){
+			console.log('Nothing in your fav list, press "<-" back to menu')
 		}
 	}
 	return obj
