@@ -1,5 +1,7 @@
 let keypress = require('keypress');
 let tc = require('../tagCrawl.js')
+let fav = require('../favorite.js')
+
 console.reset =  function () {
   return process.stdout.write('\033c');
 };
@@ -69,6 +71,14 @@ function homeXv(){
 				//throw new Error('no tag');
 			}
 	};
+
+	obj.save = async function(){
+			if(obj.videoList[obj.pointer].tag==undefined){
+				let tag = await tc.tagCrawl(obj.videoList[obj.pointer].attr.link);
+				obj.videoList[obj.pointer].tag = tag;
+			}
+			fav.addjson(obj.videoList[obj.pointer]);
+	}
 	return obj;
 }
 
