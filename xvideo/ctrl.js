@@ -1,6 +1,5 @@
 let keypress = require('keypress');
 let tc = require('../tagCrawl.js')
-let fav = require('../favorite.js')
 
 console.reset =  function () {
   return process.stdout.write('\033c');
@@ -98,6 +97,33 @@ function keyXv(key){
 	return obj;
 }
 
+function favXv(){
+	let obj = homeXv();
+	let fav = require('../favjson.js')
+	obj.videoList = fav.readjson();
+
+	obj.right = function(){
+		console.reset();
+		for(let i=obj.index;i<obj.index+10;i++){
+			if(i==obj.pointer){
+				console.log('->	'+obj.videoList[i].attr.name)
+				if(obj.videoList[i].tag!==undefined){
+					console.log('		------>'+obj.videoList[i].tag);
+					}	
+				}
+			else console.log('  	'+obj.videoList[i].attr.name);
+		}
+	}
+	obj.renderTen = function(){
+		console.reset();
+		for(let i=obj.index;i<obj.index+10;i++){
+			if(i==obj.pointer) console.log('->	'+obj.videoList[i].attr.name)
+			else console.log('  	'+obj.videoList[i].attr.name);
+		}
+	}
+	return obj
+}
 
 exports.homepage = homeXv;
 exports.keypage = keyXv;
+exports.favpage = favXv;
