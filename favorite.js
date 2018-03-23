@@ -3,31 +3,34 @@ const fs = require('fs');
 function addJSONsync(something){
 	let obj;
 	try{
-		obj = fs.readFileSync('./fav.json', 'utf8');
+		obj = fs.readFileSync('./fav.json');
 		obj = JSON.parse(obj);	
 	}catch(err){
 		//not exist
 		obj = [];
 	}
 	obj.push(something)
-	fs.writeFile('./fav.json', JSON.stringify(obj),err=>{
-	if(err)
-		console.log(err);
-//	else
-//		console.log('write done');
-	});	
+	fs.writeFileSync('./fav.json', JSON.stringify(obj));
 }
 
 function readJSONsync(){
 	let obj;
 	try{
-		obj = fs.readFileSync('./fav.json', 'utf8');
+		obj = fs.readFileSync('./fav.json');
 		obj = JSON.parse(obj);	
 	}catch(err){
+
+		console.log(err)
 		obj = [];
 	}
 	return obj;
 }
 
+function cleanJSONsync(){
+	let obj = [];
+	fs.writeFileSync('./fav.json',JSON.stringify(obj));
+}
+
 exports.addjson = addJSONsync;
 exports.readjson = readJSONsync;
+exports.cleanjson = cleanJSONsync;
