@@ -15,6 +15,8 @@ process.stdin.on('keypress',(ch,key)=>{
 
 let home = ctrl.homepage();
 let keyword = ctrl.keypage('');
+let fav = ctrl.favpage();
+exports.fpages = fav;
 exports.kkk = keyword;
 exports.homes = home;
 exports.keywords = keyword;
@@ -61,5 +63,24 @@ function keyChoose(ch,key){
 	}	
 }
 
+function favChoose(ch,key){
+	switch(key.name){
+		case 'up':
+			fav.up()
+			break;
+		case 'down':
+			fav.down();
+			break;
+		case 'left':
+			process.stdin.removeListener('keypress',favChoose);
+			mkl.all(2);
+			break;
+		case 'right':
+			fav.right();
+			break;
+	}
+}
+
 exports.hchoose = homeChoose;
 exports.kchoose = keyChoose;
+exports.fchoose = favChoose;
