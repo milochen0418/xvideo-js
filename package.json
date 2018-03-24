@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/realdennis/xvideo.js.git"
+    "url": "git+https://github.com/realdennis/xvideo-js.git"
   },
   "author": "realdennis",
   "license": "MIT",
@@ -15,9 +15,9 @@
     "xvideo-js": "./index.js"
   },
   "bugs": {
-    "url": "https://github.com/realdennis/xvideo.js/issues"
+    "url": "https://github.com/realdennis/xvideo-js/issues"
   },
-  "homepage": "https://github.com/realdennis/xvideo.js#readme",
+  "homepage": "https://github.com/realdennis/xvideo-js#readme",
   "dependencies": {
     "chalk": "^2.3.2",
     "cheerio": "^1.0.0-rc.2",
