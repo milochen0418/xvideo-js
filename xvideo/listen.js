@@ -78,6 +78,9 @@ function favChoose(ch,key){
 		case 'right':
 			fav.right();
 			break;
+		case 'd':
+			fav.delete();
+			break;
 	}
 }
 
