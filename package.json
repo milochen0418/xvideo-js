@@ -11,6 +11,9 @@
   },
   "author": "realdennis",
   "license": "MIT",
+  "bin": {
+    "xvideo": "./index.js"
+  },
   "bugs": {
     "url": "https://github.com/realdennis/xvideo.js/issues"
   },

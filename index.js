@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 let menu = require('./menu.js');
 const chalk = require('chalk');
 console.reset =  function () {
