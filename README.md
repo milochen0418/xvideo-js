@@ -1,5 +1,7 @@
 # xvideo-js
-#NFSW 
+
+More tissue You use, 
+Less issue I have ...?
 
 # Description
 CLI application to choose video, add it to favorite, see the video tag, and also open the video on browser.
