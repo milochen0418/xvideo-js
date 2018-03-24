@@ -1,6 +1,6 @@
 {
-  "name": "xvideo",
-  "version": "1.1.0",
+  "name": "xvideo.js",
+  "version": "1.2.0",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,7 +12,7 @@
   "author": "realdennis",
   "license": "MIT",
   "bin": {
-    "xvideo": "./index.js"
+    "xvideo-js": "./index.js"
   },
   "bugs": {
     "url": "https://github.com/realdennis/xvideo.js/issues"
@@ -26,5 +26,10 @@
     "request": "^2.85.0"
   },
   "devDependencies": {},
-  "description": ""
+  "description": "CLI application to choose video, add it to favorite, see the video tag, and also open the video on browser.",
+  "keywords": [
+    "xvideo",
+    "NSFW",
+    "tool"
+  ]
 }
