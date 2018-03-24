@@ -23,6 +23,7 @@ function homeXv(){
 	obj.pointer = 0;
 	obj.index = 0;
 	obj.renderTen = function(){
+		let count = 0;
 		try{
 			console.reset();
 			for(let i=obj.index;i<obj.index+10;i++){
@@ -38,9 +39,12 @@ function homeXv(){
 			console.log('"space" : Add favorite ')
 			console.log('"enter" : Watch the video')
 		}catch(err){
-			console.reset();
-			console.log('loading...')
-			obj.nextPage().then(()=>{obj.renderTen()},err=>{console.log(err)});
+			if(count==0){
+				console.reset();
+				console.log('loading...')
+				obj.nextPage().then(()=>{obj.renderTen()},err=>{console.log(err)});
+				count+=1;
+			}
 		}
 	}
 	obj.down = function(){
