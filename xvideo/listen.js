@@ -1,5 +1,5 @@
 let ctrl = require('./ctrl.js');
-let mkl = require('../menu/menuKeyListener.js');
+let mkl = require('../menu.js');
 
 let home = ctrl.homepage();
 let keyword = ctrl.keypage('');

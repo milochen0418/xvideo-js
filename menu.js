@@ -1,4 +1,4 @@
-let lis = require('../xvideo/listen.js')
+let lis = require('./xvideo/listen.js')
 
 console.reset =  function () {
   return process.stdout.write('\033c');

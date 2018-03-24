@@ -1,12 +1,11 @@
 let keypress = require('keypress');
-let tc = require('../tagCrawl.js');
 let fav = require('../favjson.js');
 const host = 'https://www.xvideos.com'
+let xvideo = require('./ReqParse.js');
 
 console.reset =  function () {
   return process.stdout.write('\033c');
 };
-let xvideo = require('./ReqParse.js');
 
 function homeXv(){
 	let obj={};
@@ -66,7 +65,7 @@ function homeXv(){
 			if(obj.videoList[obj.pointer].tag==undefined){
 				obj.videoList[obj.pointer].tag = 'Waiting...'
 				obj.renderTen();
-				let tag = await tc.tagCrawl(obj.videoList[obj.pointer].attr.link);
+				let tag = await xvideo.tagCrawl(obj.videoList[obj.pointer].attr.link);
 				obj.videoList[obj.pointer].tag = tag;
 				obj.renderTen();
 			}
@@ -80,7 +79,7 @@ function homeXv(){
 
 	obj.save = async function(){
 			if(obj.videoList[obj.pointer].tag==undefined){
-				let tag = await tc.tagCrawl(obj.videoList[obj.pointer].attr.link);
+				let tag = await xvideo.tagCrawl(obj.videoList[obj.pointer].attr.link);
 				obj.videoList[obj.pointer].tag = tag;
 			}
 

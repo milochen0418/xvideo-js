@@ -1,4 +1,4 @@
-let mkl = require('./menu/menuKeyListener.js');
+let mkl = require('./menu.js');
 console.reset =  function () {
   return process.stdout.write('\033c');
 };
