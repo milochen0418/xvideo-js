@@ -1,17 +1,5 @@
 let ctrl = require('./ctrl.js');
-let keypress = require('keypress');
 let mkl = require('../menu/menuKeyListener.js');
-
-keypress(process.stdin);
-process.stdin.setRawMode(true);
-process.stdin.resume()
-
-process.stdin.on('keypress',(ch,key)=>{
-	if(key && key.ctrl &&key.name=='c'){
-		process.stdin.pause();
-	}
-})
-
 
 let home = ctrl.homepage();
 let keyword = ctrl.keypage('');
@@ -31,13 +19,16 @@ function homeChoose(ch,key){
 			break;
 		case 'left':
 			process.stdin.removeListener('keypress',homeChoose);
-			mkl.all(0);
+			mkl.control(0);
 			break;
 		case 'right':
 			home.right()
 			break;
 		case 'space':
 			home.save();
+			break;
+		case 'return':
+			home.open();
 			break;
 	}
 }
@@ -52,7 +43,7 @@ function keyChoose(ch,key){
 			break;
 		case 'left':
 			process.stdin.removeListener('keypress',keyChoose);
-			mkl.all(1);
+			mkl.control(1);
 			break;
 		case 'right':
 			keyword.right();
@@ -60,6 +51,8 @@ function keyChoose(ch,key){
 		case 'space':
 			keyword.save();
 			break;
+		case 'return':
+			keyword.open();
 	}	
 }
 
@@ -73,7 +66,7 @@ function favChoose(ch,key){
 			break;
 		case 'left':
 			process.stdin.removeListener('keypress',favChoose);
-			mkl.all(2);
+			mkl.control(2);
 			break;
 		case 'right':
 			fav.right();
@@ -81,6 +74,8 @@ function favChoose(ch,key){
 		case 'd':
 			fav.delete();
 			break;
+		case 'return':
+			fav.open();
 	}
 }
 

@@ -1,12 +1,12 @@
 let keypress = require('keypress');
 let tc = require('../tagCrawl.js');
 let fav = require('../favjson.js');
+const host = 'https://www.xvideos.com'
 
 console.reset =  function () {
   return process.stdout.write('\033c');
 };
 let xvideo = require('./ReqParse.js');
-
 
 function homeXv(){
 	let obj={};
@@ -88,6 +88,15 @@ function homeXv(){
 			obj.renderTen();
 			console.log('Save Success');
 	}
+
+	obj.open = function(){
+		const opn = require('openurl');
+
+		if(obj.videoList[obj.pointer]!=undefined){
+			videoUrl = host+obj.videoList[obj.pointer].attr.link;
+			opn.open(videoUrl);
+		}
+	}
 	return obj;
 }
 
@@ -166,6 +175,7 @@ function favXv(){
 			console.log('==========================================================')
 			console.log('"right" : See the video tag')
 			console.log('"enter" : Watch the video')
+			console.log('    "d" : Delete this video')
 		}catch(err){
 			console.log('Nothing in your fav list, press "<-" back to menu')
 		}
