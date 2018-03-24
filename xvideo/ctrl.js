@@ -1,4 +1,3 @@
-let keypress = require('keypress');
 let fav = require('../favjson.js');
 const host = 'https://www.xvideos.com'
 let xvideo = require('./ReqParse.js');

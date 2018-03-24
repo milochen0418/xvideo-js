@@ -1,11 +1,10 @@
 let ctrl = require('./ctrl.js');
-let mkl = require('../menu.js');
+let menu = require('../menu.js');
 
 let home = ctrl.homepage();
 let keyword = ctrl.keypage('');
 let fav = ctrl.favpage();
 exports.fpages = fav;
-exports.kkk = keyword;
 exports.homes = home;
 exports.keywords = keyword;
 
@@ -19,7 +18,7 @@ function homeChoose(ch,key){
 			break;
 		case 'left':
 			process.stdin.removeListener('keypress',homeChoose);
-			mkl.control(0);
+			menu.control(0);
 			break;
 		case 'right':
 			home.right()
@@ -43,7 +42,7 @@ function keyChoose(ch,key){
 			break;
 		case 'left':
 			process.stdin.removeListener('keypress',keyChoose);
-			mkl.control(1);
+			menu.control(1);
 			break;
 		case 'right':
 			keyword.right();
@@ -66,7 +65,7 @@ function favChoose(ch,key){
 			break;
 		case 'left':
 			process.stdin.removeListener('keypress',favChoose);
-			mkl.control(2);
+			menu.control(2);
 			break;
 		case 'right':
 			fav.right();

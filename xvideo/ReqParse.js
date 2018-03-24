@@ -1,9 +1,8 @@
 let request = require('request');
 let cheerio = require('cheerio');
-let host = "https://www.xvideos.com";
 var URL = require('url');
 let readline = require('readline')
-
+let host = "https://www.xvideos.com";
 /*
 Keyword(homepage) -> Page(loop?) -> URI -> request(async)
 -> body -> "video_list"(append?)

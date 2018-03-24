@@ -1,5 +1,6 @@
 let lis = require('./xvideo/listen.js')
-
+let keypress = require('keypress')
+const readline = require('readline');
 console.reset =  function () {
   return process.stdout.write('\033c');
 };
@@ -32,36 +33,46 @@ function choose(index){
                 //function main page listener
                 break;
             case 1:
-                process.stdin.setRawMode(false);
-                process.stdin.removeAllListeners();
-
-                var readline = require('readline');
-                var rl = readline.createInterface({
-                  input: process.stdin,
-                  output: process.stdout
-                });
-                rl.question('Give me keyword: ', answer=>{
-                    //rl.removeListener('line',input);
-                    lis.kkk.keyword = answer;
-                    rl.close();
-                });
-                rl.on('close',function(){
-                    if(lis.kkk.keyword==''){
-                        console.log('keyword empty');
-                        process.exit();
-                    }
-                    //var keypress = require('keypress');
-                    process.stdin.setRawMode(true);
-                    process.stdin.resume()
-                    //keypress(process.stdin);
+                //process.stdin.resume();
+                if(lis.keywords.keyword!=''){
                     process.stdin.on('keypress',lis.kchoose);
-                    process.stdin.on('keypress',(ch,key)=>{
-                        if(key && key.ctrl &&key.name=='c'){
-                            process.stdin.pause();
-                        }
-                    })
                     lis.keywords.renderTen();
-                })
+                }
+                else{
+                    process.stdin.removeAllListeners();
+                    process.stdin.setRawMode(false);
+
+                    let rl = readline.createInterface({
+                      input: process.stdin,
+                      output: process.stdout
+                    });
+                    console.log('Give me keyword: ')
+                    rl.on('line',answer=>{
+                        lis.keywords.keyword = answer;
+                        rl.close();
+                    })
+    /*                rl.question('Give me keyword: ', answer=>{
+                        lis.keywords.keyword = answer;
+                        rl.close();
+                    });*/
+                    rl.on('close',function(){
+                        if(lis.keywords.keyword==''){
+                            console.log('keyword empty');
+                            process.exit();
+                        }
+                        keypress(process.stdin);
+                        process.stdin.setRawMode(true);
+                        process.stdin.resume();
+                        process.stdin.on('keypress',(ch,key)=>{
+                            if(key && key.ctrl &&key.name=='c'){
+                                process.stdin.pause();
+                            }
+                        })
+                        process.stdin.on('keypress',lis.kchoose);
+
+                        lis.keywords.renderTen();
+                    })
+                }
                 break;
             case 2:
                 process.stdin.on('keypress',lis.fchoose);
